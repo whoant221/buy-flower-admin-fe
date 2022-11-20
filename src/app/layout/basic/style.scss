@@ -1,0 +1,70 @@
+.header{
+    background-color: darkslategray;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    .logout{  
+        padding-right: 10px;
+    }
+}
+
+.sidebar {
+    background-color: darkslategray;
+    width: 300px;
+    // height: 100%;
+    .logo {
+        img{
+            height: 60px;
+            width: 60px;
+        }
+        margin: 5px 10px;
+        
+    }
+    .menu{      
+        div{
+            padding: 10px 20px;
+            color: white;
+            font-weight:bold;
+
+            &:hover{
+                background-color: #c6defd;
+            }
+            &:active{
+                background-color: #FF7F50 ;
+            }
+        }
+        
+        
+    }
+}
+
+.link-component-body{
+    display: flex;
+}
+
+.navbar{
+    margin-top: -8px;
+    div{
+        padding: 0 5px 0 0 
+        
+    }
+
+}
+
+.modal_btn{
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 48.5% 48.5%;
+}
+
+.modal_create-product{
+    display: flex;
+    flex-wrap: wrap;
+
+    >img{
+        width: 80px;
+        margin: 5px;
+    }
+}
