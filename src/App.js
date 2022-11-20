@@ -1,5 +1,5 @@
 import BasicLayout from "./app/layout/basic/BasicLayout.jsx";
-import { routes } from './app/routes/index.jsx'
+import { routes } from './app/routes'
 import './App.scss'
 import { Routes, Route } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom';
