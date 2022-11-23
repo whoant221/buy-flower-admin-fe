@@ -1,18 +1,10 @@
-import React from 'react'
-import {
-    Form,
-    Input,
-    Button,
-    Radio,
-    Select,
-} from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react'
+import { Button, Form, Input } from 'antd';
 import BasicLayout from '../../layout/basic/BasicLayout'
-import { useForm } from 'antd/es/form/Form';
 
 export default function Order() {
     return (
-        <BasicLayout ComponentPage={OrderDisplay} />
+        <BasicLayout ComponentPage={OrderDisplay}/>
     )
 }
 
@@ -98,9 +90,10 @@ const OrderDisplay = () => {
     return <main className="app-content">
         <div className="app-title">
             <ul className="app-breadcrumb breadcrumb side">
-                <li className="breadcrumb-item active"><a href="#"><b>Danh sách đơn hàng</b></a></li>
+                <li className="breadcrumb-item active"><a href="#"><b>Danh sách
+                    đơn hàng</b></a></li>
             </ul>
-            <div id="clock" />
+            <div id="clock"/>
         </div>
         <div className="row">
             <div className="col-md-12">
@@ -118,58 +111,72 @@ const OrderDisplay = () => {
                                     autoComplete="off"
                                 >
                                     <div style={{ display: "flex" }}>
-                                        <Form.Item label="ID đơn hàng" name="idProduct" >
-                                            <Input />
+                                        <Form.Item label="ID đơn hàng"
+                                                   name="idProduct">
+                                            <Input/>
                                         </Form.Item>
 
-                                        <Form.Item label="Tên khách hàng" name="userName" >
-                                            <Input />
+                                        <Form.Item label="Tên khách hàng"
+                                                   name="Tên tài khoản">
+                                            <Input/>
                                         </Form.Item>
-                                        <Form.Item >
-                                            <Button htmlType='submit'>Tìm Kiếm</Button>
+                                        <Form.Item>
+                                            <Button htmlType='submit'>Tìm
+                                                Kiếm</Button>
                                         </Form.Item>
                                     </div>
                                 </Form>
 
 
-
                             </div>
                         </div>
-                        <table className="table table-hover table-bordered" id="sampleTable">
+                        <table className="table table-hover table-bordered"
+                               id="sampleTable">
                             <thead>
-                                <tr>
-                                    <th>ID đơn hàng</th>
-                                    <th>Khách hàng</th>
-                                    <th>Đơn hàng</th>
-                                    <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Tình trạng</th>
-                                    <th>Tính năng</th>
-                                </tr>
+                            <tr>
+                                <th>ID đơn hàng</th>
+                                <th>Khách hàng</th>
+                                <th>Đơn hàng</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th>Tình trạng</th>
+                                <th>Tính năng</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {
-                                    (fakeData.length > 0 ? (fakeData.map(e => {
-                                        return <tr>
-                                            <td>{e.id}</td>
-                                            <td>{e.userName}</td>
-                                            <td>{e.idProduct}</td>
-                                            <td>{e.amount}</td>
-                                            <td>{e.price}</td>
-                                            <td>{e.status}</td>
-                                            <td className="table-td-center"><button className="btn btn-primary btn-sm trash" type="button" title="Hủy đơn" onClick={() => {
-                                                handleCancel(e)
-                                            }}><i class="fas fa-ban" />
+                            {
+                                (fakeData.length > 0 ? (fakeData.map(e => {
+                                    return <tr>
+                                        <td>{e.id}</td>
+                                        <td>{e.userName}</td>
+                                        <td>{e.idProduct}</td>
+                                        <td>{e.amount}</td>
+                                        <td>{e.price}</td>
+                                        <td>{e.status}</td>
+                                        <td className="table-td-center">
+                                            <button
+                                                className="btn btn-primary btn-sm trash"
+                                                type="button" title="Hủy đơn"
+                                                onClick={() => {
+                                                    handleCancel(e)
+                                                }}><i class="fas fa-ban"/>
                                             </button>
-                                                <button onClick={() => {
-                                                    // showModal(e);
-                                                    handDelivered(e)
-                                                }} className="btn btn-primary btn-sm edit" type="button" title="Đã giao" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i className="fas fa-check" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    })) : <></>)
-                                }
+                                            <button onClick={() => {
+                                                // showModal(e);
+                                                handDelivered(e)
+                                            }}
+                                                    className="btn btn-primary btn-sm edit"
+                                                    type="button"
+                                                    title="Đã giao"
+                                                    id="show-emp"
+                                                    data-toggle="modal"
+                                                    data-target="#ModalUP"><i
+                                                className="fas fa-check"/>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                })) : <></>)
+                            }
                             </tbody>
                         </table>
                     </div>
