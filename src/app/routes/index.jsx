@@ -1,15 +1,19 @@
 import Home from '../pages/Home/index.jsx'
-import Customer from '../pages/manageCustomer/index.jsx'
-import Order from '../pages/manageOrder/index.jsx'
-import Product from '../pages/manageProduct/index.jsx'
-import TurnOver from '../pages/turnOver/index.js'
-import Voucher from '../pages/voucher/index.js'
+import Customer from '../pages/ManageCustomer/index.jsx'
+import Order from '../pages/ManageOrder/index.jsx'
+import ManageFLower from '../pages/ManageFlower/index.jsx'
+import TurnOver from '../pages/TurnOver/index.js'
+import ManageVoucher from '../pages/ManageVoucher'
+import ManageBud from "../pages/ManagerBud";
+import ManageCategory from "../pages/ManageCategory";
 
 export const routes = [
     { path: '/', component: Home },
     { path: '/customer', component: Customer },
+    { path: '/bud', component: ManageBud },
+    { path: '/category', component: ManageCategory },
     { path: '/order', component: Order },
-    { path: '/product', component: Product },
+    { path: '/flower', component: ManageFLower },
     { path: '/turnover', component: TurnOver },
-    { path: '/voucher', component: Voucher },
+    { path: '/voucher', component: ManageVoucher },
 ]
