@@ -1,0 +1,8 @@
+node_modules
+deployments
+.env
+.github
+README.md
+.gitignore
+.git
+.idea
