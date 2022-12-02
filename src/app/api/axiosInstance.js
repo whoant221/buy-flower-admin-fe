@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toastError } from '../components/Toast'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://94.100.26.30:30001',
 });
 
 instance.interceptors.request.use(function (config) {
