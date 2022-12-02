@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toastError } from '../components/Toast'
 
 const instance = axios.create({
-    baseURL: 'http://94.100.26.30:30001',
+    baseURL: 'https://api-buy-flower.votuan.xyz',
 });
 
 instance.interceptors.request.use(function (config) {
