@@ -1,7 +1,5 @@
 import { Button, DatePicker, Form, Input, Modal } from 'antd';
-import dayjs from 'dayjs';
 import React from 'react';
-import moment from "moment";
 
 const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
 
@@ -57,14 +55,14 @@ const PopupCreateVoucher = (props) => {
                         label="Ngày áp dụng"
                         name="effective_at">
                         <DatePicker
-                            defaultValue={dayjs(moment.now(), dateFormatList[0])}
+                            // defaultValue={dayjs(moment.now(), dateFormatList[0])}
                             format={dateFormatList}/>
                     </Form.Item>
                     <Form.Item
                         label="Ngày kết thúc"
                         name="expiration_at">
                         <DatePicker
-                            defaultValue={dayjs(moment(moment(), "MM-DD-YYYY").add(7, 'days'), dateFormatList[0])}
+                            // defaultValue={dayjs(moment(moment(), "MM-DD-YYYY").add(7, 'days'), dateFormatList[0])}
                             format={dateFormatList}/>
                     </Form.Item>
                     <div className='modal_btn'>
