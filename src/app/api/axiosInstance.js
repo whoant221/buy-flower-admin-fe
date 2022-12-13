@@ -3,9 +3,10 @@ import { toastError } from '../components/Toast'
 
 const instance = axios.create({
     baseURL: 'https://api-buy-flower.votuan.xyz',
+    // baseURL: 'http://localhost:3001',
 });
 
-instance.interceptors.request.use(function (config) {
+instance.interceptors.request.use(function(config) {
     const storageUser = localStorage.getItem('user');
 
     if (storageUser) {
@@ -17,16 +18,16 @@ instance.interceptors.request.use(function (config) {
     }
 
     return config;
-}, function (error) {
+}, function(error) {
 
     return Promise.reject(error);
 });
 
 // Add a response interceptor
-instance.interceptors.response.use(function (response) {
+instance.interceptors.response.use(function(response) {
 
     return response;
-}, function (error) {
+}, function(error) {
     toastError(error);
     return Promise.reject(error);
 });
