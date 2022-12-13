@@ -28,8 +28,12 @@ const createVoucher = ({
     });
 };
 
+const deleteVoucher = (voucherCode) => {
+    return axios.delete(`/api/admin/vouchers/${voucherCode}`);
+};
 
 export default {
     getVouchers,
-    createVoucher
+    createVoucher,
+    deleteVoucher
 };

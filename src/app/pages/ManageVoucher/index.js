@@ -3,6 +3,7 @@ import BasicLayout from '../../layout/basic/BasicLayout'
 import PopUp from '../../components/PopupCreateVoucher'
 import voucherApi from "../../api/voucher";
 import { toastSuccess } from "../../components/Toast";
+import moment from 'moment';
 
 export default function ManageVoucher() {
     return (
@@ -14,10 +15,10 @@ const VoucherDisplay = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [vouchers, setVouchers] = useState([]);
-    const [isCreated, setIsCreated] = useState(false);
+    const [isReload, setIsReload] = useState(false);
 
     useEffect(() => {
-        const listVouchers = async () => {
+        const listVouchers = async() => {
             try {
                 const { data } = await voucherApi.getVouchers();
                 setVouchers(data.vouchers)
@@ -27,16 +28,17 @@ const VoucherDisplay = () => {
         };
 
         listVouchers();
-    }, [isCreated]);
+    }, [isReload]);
+
     const showModal = (e) => {
         setIsModalOpen(true);
     };
 
-    const handleOk = async (e) => {
+    const handleOk = async(e) => {
         try {
             await voucherApi.createVoucher(e)
             toastSuccess("Tạo thành công");
-            setIsCreated(true);
+            setIsReload(true);
             setIsModalOpen(false);
         } catch (e) {
             console.error(e)
@@ -47,8 +49,10 @@ const VoucherDisplay = () => {
         setIsModalOpen(false);
     };
 
-    const handleDeleteUser = () => {
-
+    const handleDeleteVoucher = async voucher => {
+        await voucherApi.deleteVoucher(voucher.code);
+        toastSuccess("Xóa thành công");
+        setIsReload(true);
     };
 
     return <main className="app-content">
@@ -82,7 +86,7 @@ const VoucherDisplay = () => {
                             id="sampleTable">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>STT</th>
                                 <th>Mã voucher</th>
                                 <th>Đã sử dụng / giới hạn</th>
                                 <th>Nội dung</th>
@@ -95,14 +99,14 @@ const VoucherDisplay = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {vouchers.length > 0 ? vouchers.map(voucher => {
+                            {vouchers.length > 0 ? vouchers.map((voucher, index) => {
                                 return <tr>
-                                    <td>{voucher.id}</td>
+                                    <td>{index + 1}</td>
                                     <td>{voucher.code}</td>
-                                    <td>{voucher.used_count} / {voucher.limit_count}</td>
+                                    <td>{voucher.orders_count} / {voucher.limit_count}</td>
                                     <td>{voucher.content}</td>
-                                    <td>{voucher.effective_at}</td>
-                                    <td>{voucher.expiration_at}</td>
+                                    <td>{moment(voucher.effective_at).format('MM/DD/YYYY')}</td>
+                                    <td>{moment(voucher.expiration_at).format('MM/DD/YYYY')}</td>
                                     <td>{voucher.discount} %</td>
                                     <td>{voucher.threshold}</td>
                                     <td>{voucher.max_amount}</td>
@@ -111,7 +115,7 @@ const VoucherDisplay = () => {
                                             className="btn btn-primary btn-sm trash"
                                             type="button" title="Xóa"
                                             onClick={() => {
-                                                handleDeleteUser(voucher)
+                                                handleDeleteVoucher(voucher)
                                             }}><i className="fas fa-trash-alt"/>
                                         </button>
                                         <button onClick={() => {
