@@ -16,26 +16,21 @@ const Flower = () => {
     const [form] = Form.useForm();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [flowers, setFlowers] = useState([]);
-    const [isCreated, setIsCreated] = useState(false);
     const [colors, setColors] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [reload, setReload] = useState(true);
 
     useEffect(() => {
-
-        const listFlowers = async () => {
-            try {
-                const { data } = await flowerApi.getAllFlowers();
-                setFlowers(data.flowers)
-            } catch (e) {
-                console.error(e)
-            }
+        const listFlowers = async() => {
+            const { data } = await flowerApi.getAllFlowers();
+            setFlowers(data.flowers)
         };
 
         listFlowers();
-    }, [isCreated]);
+    }, [reload]);
 
     useEffect(() => {
-        const listCategories = async () => {
+        const listCategories = async() => {
             try {
                 const { data } = await categoryApi.getAllCategories();
                 setCategories(data.categories)
@@ -48,7 +43,7 @@ const Flower = () => {
     }, []);
 
     useEffect(() => {
-        const listColors = async () => {
+        const listColors = async() => {
             try {
                 const { data } = await colorApi.getAllColors();
                 setColors(data.colors)
@@ -64,7 +59,7 @@ const Flower = () => {
         setIsModalOpen(true);
     };
     const handleOk = (e) => {
-
+        setReload(prevState => !prevState);
         setIsModalOpen(false);
     };
 
@@ -72,15 +67,11 @@ const Flower = () => {
         setIsModalOpen(false);
     };
 
-    const handleDeleteUser = (e) => {
-
-    };
-
     const handleClear = () => {
         form.resetFields();
     };
 
-    const onSearch = async (e) => {
+    const onSearch = async(e) => {
         try {
             const { data } = await flowerApi.getAllFlowers(e);
             setFlowers(data.flowers)
@@ -129,8 +120,8 @@ const Flower = () => {
                                             <Select style={{ width: 200 }}>
                                                 {
                                                     (categories.length > 0 ? (categories.map(category => {
-                                                        return <Select.Option
-                                                            value={category.id}>{category.title}
+                                                        return <Select.Option key={category.id}
+                                                                              value={category.id}>{category.title}
                                                         </Select.Option>
                                                     })) : <></>)
                                                 }
@@ -142,6 +133,7 @@ const Flower = () => {
                                                 {
                                                     (colors.length > 0 ? (colors.map(color => {
                                                         return <Select.Option
+                                                            key={color}
                                                             value={color}>{color}
                                                         </Select.Option>
                                                     })) : <></>)
@@ -181,7 +173,7 @@ const Flower = () => {
                             <tbody>
                             {
                                 (flowers.length > 0 ? (flowers.map((e, i) => {
-                                    return <tr>
+                                    return <tr id={e.id}>
                                         <td>{e.id}</td>
                                         <td>{e.name}</td>
                                         <td>{e.original_price}</td>
@@ -193,7 +185,7 @@ const Flower = () => {
                                                 className="btn btn-primary btn-sm trash"
                                                 type="button" title="Xóa"
                                                 onClick={() => {
-                                                    handleDeleteUser(e)
+
                                                 }}><i
                                                 className="fas fa-trash-alt"/>
                                             </button>
