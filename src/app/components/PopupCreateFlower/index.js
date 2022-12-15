@@ -14,7 +14,7 @@ const PopupCreateFlower = (props) => {
         const [categories, setCategories] = useState([]);
         const [buds, setBuds] = useState([]);
         const [detailBuds, setDetailBuds] = useState([]);
-        
+
         const { isModalOpen, handleCancel, handleOk } = props
 
         useEffect(() => {
@@ -24,7 +24,7 @@ const PopupCreateFlower = (props) => {
             };
 
             listCategories();
-        });
+        }, []);
 
         useEffect(() => {
             const listColors = async() => {

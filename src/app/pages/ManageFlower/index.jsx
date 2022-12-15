@@ -21,11 +21,9 @@ const Flower = () => {
     const [reload, setReload] = useState(true);
 
     useEffect(() => {
-
         const listFlowers = async() => {
             const { data } = await flowerApi.getAllFlowers();
             setFlowers(data.flowers)
-
         };
 
         listFlowers();
