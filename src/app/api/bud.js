@@ -7,15 +7,29 @@ const getAllBuds = (name = '') => {
 };
 
 const createBud = ({
-                       name,
-                   }) => {
+    name,
+    count
+}) => {
     return axios.post('/api/admin/buds', {
         name,
+        count
+    });
+};
+
+const updateBud = ({
+    name,
+    count,
+    id
+}) => {
+    return axios.put(`/api/admin/buds/${id}`, {
+        name,
+        count
     });
 };
 
 
 export default {
     getAllBuds,
-    createBud
+    createBud,
+    updateBud
 };

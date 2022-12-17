@@ -11,16 +11,40 @@ const getAllFlowers = (data) => {
 };
 
 const createFlower = ({
-                          name,
-                          color,
-                          original_price,
-                          sale_price,
-                          description,
-                          images,
-                          category_ids,
-                          bud_data
-                      }) => {
+    name,
+    color,
+    original_price,
+    sale_price,
+    description,
+    images,
+    category_ids,
+    bud_data
+}) => {
     return axios.post('/api/admin/flowers', {
+        name,
+        color,
+        original_price,
+        sale_price,
+        description,
+        images,
+        category_ids,
+        bud_data,
+    });
+};
+
+
+const updateFlower = ({
+    name,
+    color,
+    original_price,
+    sale_price,
+    description,
+    images,
+    category_ids,
+    bud_data,
+    id
+}) => {
+    return axios.put(`/api/admin/flowers/${id}`, {
         name,
         color,
         original_price,
@@ -35,5 +59,6 @@ const createFlower = ({
 
 export default {
     getAllFlowers,
-    createFlower
+    createFlower,
+    updateFlower
 };
