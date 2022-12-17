@@ -7,9 +7,19 @@ const getAllCategories = (title = '') => {
 };
 
 const createCategory = ({
-                            title,
-                        }) => {
+    title,
+}) => {
     return axios.post('/api/admin/categories', {
+        title,
+    });
+};
+
+
+const updateCategory = ({
+    title,
+    id
+}) => {
+    return axios.put(`/api/admin/categories/${id}`, {
         title,
     });
 };
@@ -17,5 +27,6 @@ const createCategory = ({
 
 export default {
     getAllCategories,
-    createCategory
+    createCategory,
+    updateCategory
 };

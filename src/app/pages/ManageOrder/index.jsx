@@ -25,7 +25,7 @@ const STATES = {
 
 export default function Order() {
     return (
-        <BasicLayout ComponentPage={OrderDisplay}/>
+        <BasicLayout ComponentPage={OrderDisplay} />
     )
 }
 
@@ -36,7 +36,7 @@ const OrderDisplay = () => {
     const [isReload, setIsReload] = useState(false);
 
     useEffect(() => {
-        const listOrders = async() => {
+        const listOrders = async () => {
             try {
                 const { data } = await orderApi.getOrders();
                 setOrders(data.orders)
@@ -76,7 +76,7 @@ const OrderDisplay = () => {
                 <li className="breadcrumb-item active"><a href="#"><b>Danh sách
                     đơn hàng</b></a></li>
             </ul>
-            <div id="clock"/>
+            <div id="clock" />
         </div>
         <div className="row">
             <div className="col-md-12">
@@ -95,13 +95,13 @@ const OrderDisplay = () => {
                                 >
                                     <div style={{ display: "flex" }}>
                                         <Form.Item label="ID đơn hàng"
-                                                   name="idProduct">
-                                            <Input/>
+                                            name="idProduct">
+                                            <Input />
                                         </Form.Item>
 
                                         <Form.Item label="Tên khách hàng"
-                                                   name="Tên tài khoản">
-                                            <Input/>
+                                            name="Tên tài khoản">
+                                            <Input />
                                         </Form.Item>
                                         <Form.Item>
                                             <Button htmlType='submit'>Tìm
@@ -114,70 +114,64 @@ const OrderDisplay = () => {
                             </div>
                         </div>
                         <table className="table table-hover table-bordered"
-                               id="sampleTable">
+                            id="sampleTable">
                             <thead>
-                            <tr>
-                                <th>Mã đơn hàng</th>
-                                <th>Khách hàng</th>
-                                <th>Giá gốc</th>
-                                <th>Giá sau khi giảm giá</th>
-                                <th>Số lượng sản phẩm</th>
-                                <th>Trạng thái</th>
-                                <th>Tracking đơn hàng</th>
-                                <th>Tính năng</th>
-                            </tr>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Khách hàng</th>
+                                    <th>Giá gốc</th>
+                                    <th>Giá sau khi giảm giá</th>
+                                    <th>Số lượng sản phẩm</th>
+                                    <th>Trạng thái</th>
+                                    <th>Tracking đơn hàng</th>
+                                    <th>Tính năng</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {
-                                (orders.length > 0 ? (orders.map(order => {
-                                    return <tr>
-                                        <td>{order.order_id}</td>
-                                        <td>{order.name}</td>
-                                        <td>{order.original_price} đ</td>
-                                        <td>{order.sale_price} đ</td>
-                                        <td>{order.order_details.length}</td>
-                                        <td>
-                                            <span className={STATES[order.state].className}>
-                                            {STATES[order.state].text}
-                                            </span>
-                                        </td>
-                                        <td>{order.shipping_link}</td>
-                                        <td className="table-td-center">
-                                            <button
-                                                className="btn btn-primary btn-sm trash"
-                                                type="button" title="Hủy đơn"
-                                                onClick={() => {
-                                                    handleCancelled(order)
-                                                }}><i class="fas fa-ban"/>
-                                            </button>
-                                            <button onClick={() => {
-                                                // showModal(e);
-                                                handleProcessing(order)
-                                            }}
+                                {
+                                    (orders.length > 0 ? (orders.map(order => {
+                                        return <tr>
+                                            <td>{order.order_id}</td>
+                                            <td>{order.name}</td>
+                                            <td>{order.original_price} đ</td>
+                                            <td>{order.sale_price} đ</td>
+                                            <td>{order.order_details.length}</td>
+                                            <td>
+                                                <span className={STATES[order.state].className}>
+                                                    {STATES[order.state].text}
+                                                </span>
+                                            </td>
+                                            <td>{order.shipping_link}</td>
+                                            <td className="table-td-center">
+
+                                                <button onClick={() => {
+                                                    // showModal(e);
+                                                    handleProcessing(order)
+                                                }}
                                                     className="btn btn-primary btn-sm cloud"
                                                     type="button"
                                                     title="Đã xử lý xong"
                                                     id="show-emp"
                                                     data-toggle="modal"
                                                     data-target="#ModalUP"><i
-                                                className="fas fa-check"/>
-                                            </button>
-                                            <button onClick={() => {
-                                                // showModal(e);
-                                                handleSuccessful(order)
-                                            }}
+                                                        className="fas fa-check" />
+                                                </button>
+                                                <button onClick={() => {
+                                                    // showModal(e);
+                                                    handleSuccessful(order)
+                                                }}
                                                     className="btn btn-success btn-sm edit"
                                                     type="button"
                                                     title="Đơn hoàn thành"
                                                     id="show-emp"
                                                     data-toggle="modal"
                                                     data-target="#ModalUP"><i
-                                                className="fas fa-check"/>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                })) : <></>)
-                            }
+                                                        className="fas fa-check" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    })) : <></>)
+                                }
                             </tbody>
                         </table>
                     </div>
