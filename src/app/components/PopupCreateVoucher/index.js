@@ -16,57 +16,57 @@ const PopupCreateVoucher = (props) => {
     return (
         <>
             <Modal title="Tạo voucher mới" open={isModalOpen}
-                onCancel={handleCancel} footer={null} closable={false}>
+                   onCancel={handleCancel} footer={null} closable={false}>
                 <Form labelCol={{ span: 6 }}
-                    wrapperCol={{ span: 18 }}
-                    form={form}
-                    onFinish={onFinishForm}>
+                      wrapperCol={{ span: 18 }}
+                      form={form}
+                      onFinish={onFinishForm}>
                     <Form.Item
                         label="Code"
                         name="code">
-                        <Input />
+                        <Input/>
                     </Form.Item>
                     <Form.Item
                         label="Nội dung"
                         name="content">
-                        <Input />
+                        <Input/>
                     </Form.Item>
                     <Form.Item
                         label="Giới hạn sử dụng"
                         name="limit_count">
-                        <Input />
+                        <Input/>
                     </Form.Item>
                     <Form.Item
                         label="% giảm"
                         name="discount">
-                        <Input />
+                        <Input/>
                     </Form.Item>
                     <Form.Item
                         label="Ngưỡng"
                         name="threshold">
-                        <Input />
+                        <Input/>
                     </Form.Item>
                     <Form.Item
                         label="Tối đa nhận"
                         name="max_amount">
-                        <Input />
+                        <Input/>
                     </Form.Item>
                     <Form.Item
                         label="Ngày áp dụng"
                         name="effective_at">
                         <DatePicker
                             // defaultValue={dayjs(moment.now(), dateFormatList[0])}
-                            format={dateFormatList} />
+                            format={dateFormatList}/>
                     </Form.Item>
                     <Form.Item
                         label="Ngày kết thúc"
                         name="expiration_at">
                         <DatePicker
                             // defaultValue={dayjs(moment(moment(), "MM-DD-YYYY").add(7, 'days'), dateFormatList[0])}
-                            format={dateFormatList} />
+                            format={dateFormatList}/>
                     </Form.Item>
                     <Form.Item
-                        label="Số điểm cần để đổi"
+                        label="Số điểm đổi"
                         name="point">
                         <Input/>
                     </Form.Item>

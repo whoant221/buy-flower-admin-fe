@@ -7,7 +7,7 @@ import { toastSuccess } from "../../components/Toast";
 
 export default function ManageCustomer() {
     return (
-        <BasicLayout ComponentPage={Customer} />
+        <BasicLayout ComponentPage={Customer}/>
     )
 }
 const Customer = () => {
@@ -18,7 +18,7 @@ const Customer = () => {
     const [itemUser, setItemUser] = useState()
 
     useEffect(() => {
-        const listUsers = async () => {
+        const listUsers = async() => {
             try {
                 const { data } = await userApi.getAllUsers();
                 setUsers(data.users)
@@ -34,7 +34,7 @@ const Customer = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = async (e) => {
+    const handleOk = async(e) => {
         try {
             await userApi.createUser(e)
             toastSuccess("Tạo thành công");
@@ -53,7 +53,7 @@ const Customer = () => {
 
     };
 
-    const onSearch = async (e) => {
+    const onSearch = async(e) => {
         try {
             const { data } = await userApi.getAllUsers(e.email);
             setUsers(data.users)
@@ -71,7 +71,7 @@ const Customer = () => {
                 form.setFieldsValue(data)
             }
         }, [data])
-        const onFinishForm = async (e) => {
+        const onFinishForm = async(e) => {
             await userApi.updateUser({ ...e, id: data.id })
             toastSuccess('cập nhật thành công')
             setIsCreated(prev => !prev)
@@ -79,7 +79,7 @@ const Customer = () => {
         }
 
         return <Modal title="Chỉnh sửa" open={openModalEdit}
-            onCancel={closeModalEdit} footer={null} closable={false}>
+                      onCancel={closeModalEdit} footer={null} closable={false}>
             <Form
                 form={form}
                 labelCol={{ span: 7 }}
@@ -93,7 +93,7 @@ const Customer = () => {
                         required: true,
                         message: 'Vui lòng nhập email !'
                     }]}>
-                    <Input disabled />
+                    <Input disabled/>
                 </Form.Item>
 
                 <Form.Item
@@ -104,7 +104,7 @@ const Customer = () => {
                         message: 'Vui lòng nhập tên !'
                     }]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
 
                 <Form.Item
@@ -114,7 +114,7 @@ const Customer = () => {
                         required: true,
                         message: 'Vui lòng nhập số điện thoại !'
                     }]}>
-                    <Input type='text' step={false} />
+                    <Input type='text' step={false}/>
                 </Form.Item>
 
                 <Form.Item
@@ -125,7 +125,7 @@ const Customer = () => {
                         message: 'Vui lòng nhập địa chỉ!'
                     }]}
                 >
-                    <Input />
+                    <Input/>
                 </Form.Item>
                 <div className='modal_btn'>
                     <Button htmlType='submit'>Ok</Button>
@@ -138,14 +138,14 @@ const Customer = () => {
 
     return <main className="app-content">
         <PopUpCreateUser isModalOpen={isModalOpen} handleOk={handleOk}
-            handleCancel={handleCancel} />
-        <ModalEdit data={itemUser} openModalEdit={openModalEdit} closeModalEdit={() => setOpenModalEdit(false)} />
+                         handleCancel={handleCancel}/>
+        <ModalEdit data={itemUser} openModalEdit={openModalEdit} closeModalEdit={() => setOpenModalEdit(false)}/>
         <div className="app-title">
             <ul className="app-breadcrumb breadcrumb side">
                 <li className="breadcrumb-item active"><a href="#"><b>Danh sách
                     khách hàng</b></a></li>
             </ul>
-            <div id="clock" />
+            <div id="clock"/>
         </div>
         <div className="row">
             <div className="col-md-12">
@@ -154,10 +154,10 @@ const Customer = () => {
                         <div className="row element-button">
                             <div className="col-sm-2">
                                 <button className="btn btn-add btn-sm"
-                                    onClick={() => {
-                                        showModal();
-                                    }}>
-                                    <i className="fas fa-plus" />
+                                        onClick={() => {
+                                            showModal();
+                                        }}>
+                                    <i className="fas fa-plus"/>
                                     Tạo mới khách hàng
                                 </button>
                             </div>
@@ -170,8 +170,8 @@ const Customer = () => {
                                 >
                                     <div style={{ display: "flex" }}>
                                         <Form.Item label="Email"
-                                            name="email">
-                                            <Input />
+                                                   name="email">
+                                            <Input/>
                                         </Form.Item>
 
                                         <Form.Item>
@@ -188,42 +188,42 @@ const Customer = () => {
                             cellPadding={0} cellSpacing={0} border={0}
                             id="sampleTable">
                             <thead>
-                                <tr>
-                                    <th width={10}>STT</th>
-                                    <th>Email</th>
-                                    <th>Họ và tên</th>
-                                    <th>Địa chỉ</th>
-                                    <th>SĐT</th>
-                                    <th width={20}>Trạng thái</th>
-                                    <th width={100}>Tính năng</th>
-                                </tr>
+                            <tr>
+                                <th width={10}>STT</th>
+                                <th>Email</th>
+                                <th>Họ và tên</th>
+                                <th>Địa chỉ</th>
+                                <th>SĐT</th>
+                                <th>Điểm thưởng</th>
+                                <th width={100}>Tính năng</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {
-                                    (users.length > 0 ? (users.map((user, i) => {
-                                        return <tr>
-                                            <td>{i + 1}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.name}</td>
-                                            <td>{user.address}</td>
-                                            <td>{user.phone_number}</td>
-                                            <td>{user.state || 'active'}</td>
-                                            <td className="table-td-center">
-                                                <button onClick={() => {
-                                                    setItemUser(user)
-                                                    setOpenModalEdit(true)
-                                                }}
+                            {
+                                (users.length > 0 ? (users.map((user, i) => {
+                                    return <tr>
+                                        <td>{i + 1}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.address}</td>
+                                        <td>{user.phone_number}</td>
+                                        <td>{user.point}</td>
+                                        <td className="table-td-center">
+                                            <button onClick={() => {
+                                                setItemUser(user)
+                                                setOpenModalEdit(true)
+                                            }}
                                                     className="btn btn-primary btn-sm edit"
                                                     type="button" title="Sửa"
                                                     id="show-emp"
                                                     data-toggle="modal"
                                                     data-target="#ModalUP"><i
-                                                        className="fas fa-edit" />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    })) : <></>)
-                                }
+                                                className="fas fa-edit"/>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                })) : <></>)
+                            }
                             </tbody>
                         </table>
                     </div>
