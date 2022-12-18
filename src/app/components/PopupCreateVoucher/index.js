@@ -65,6 +65,11 @@ const PopupCreateVoucher = (props) => {
                             // defaultValue={dayjs(moment(moment(), "MM-DD-YYYY").add(7, 'days'), dateFormatList[0])}
                             format={dateFormatList}/>
                     </Form.Item>
+                    <Form.Item
+                        label="Số điểm cần để đổi"
+                        name="point">
+                        <Input/>
+                    </Form.Item>
                     <div className='modal_btn'>
                         <Button htmlType='submit'>Ok</Button>
                         <Button onClick={handleCancel}>Cancel</Button>
