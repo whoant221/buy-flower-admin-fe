@@ -21,7 +21,7 @@ const PopUpCreateCategory = (props) => {
     return (
         <>
             <Modal title="Tạo mới danh mục" open={isModalOpen}
-                   onCancel={onCancel} footer={null}>
+                onCancel={onCancel} footer={null} closable={false}>
                 <Form
                     form={form}
                     labelCol={{ span: 6 }}
@@ -36,7 +36,7 @@ const PopUpCreateCategory = (props) => {
                             message: 'Vui lòng nhập tiêu đề !'
                         }]}
                     >
-                        <Input/>
+                        <Input />
                     </Form.Item>
 
                     <div className='modal_btn'>

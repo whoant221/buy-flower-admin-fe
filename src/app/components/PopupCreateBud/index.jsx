@@ -22,7 +22,7 @@ const PopUpCreateBud = (props) => {
     return (
         <>
             <Modal title="Tạo mới nụ hoa" open={isModalOpen}
-                   onCancel={onCancel} footer={null}>
+                onCancel={onCancel} footer={null} closable={false}>
                 <Form
                     form={form}
                     labelCol={{ span: 6 }}
@@ -37,7 +37,18 @@ const PopUpCreateBud = (props) => {
                             message: 'Vui lòng nhập tên !'
                         }]}
                     >
-                        <Input/>
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Số lượng"
+                        name="count"
+                        rules={[{
+                            required: true,
+                            message: 'Vui lòng nhập số lượng !'
+                        }]}
+                    >
+                        <Input />
                     </Form.Item>
 
                     <div className='modal_btn'>

@@ -7,13 +7,13 @@ const getAllUsers = (email = '') => {
 };
 
 const createUser = ({
-                        email,
-                        password,
-                        password_confirmation,
-                        name,
-                        address,
-                        phone_number
-                    }) => {
+    email,
+    password,
+    password_confirmation,
+    name,
+    address,
+    phone_number
+}) => {
     return axios.post('/api/admin/users', {
         email,
         password,
@@ -24,8 +24,23 @@ const createUser = ({
     });
 };
 
+const updateUser = ({
+    email,
+    name,
+    address,
+    phone_number,
+    id
+}) => {
+    return axios.put(`/api/admin/users/${id}`, {
+        name,
+        address,
+        phone_number
+    });
+};
+
 
 export default {
     getAllUsers,
-    createUser
+    createUser,
+    updateUser
 };
