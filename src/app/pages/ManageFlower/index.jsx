@@ -359,7 +359,6 @@ const Flower = () => {
                                     <th>Giá tiền</th>
                                     <th>Mô tả</th>
                                     <th>Danh mục</th>
-                                    <th>Trạng thái</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -372,7 +371,6 @@ const Flower = () => {
                                             <td>{e.original_price}</td>
                                             <td>{e.description}</td>
                                             <td>{e.category}</td>
-                                            <td>{e.state || 'active'}</td>
                                             <td className="table-td-center">
                                                 <button onClick={() => {
                                                     setItemFlower(e)
