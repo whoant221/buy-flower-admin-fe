@@ -170,7 +170,7 @@ const Bud = () => {
                                     <th width={10}>STT</th>
                                     <th>Tên</th>
                                     <th>Số lượng</th>
-                                    <th width={20}>Trạng thái</th>
+
                                     <th width={100}>Tính năng</th>
                                 </tr>
                             </thead>
@@ -181,7 +181,7 @@ const Bud = () => {
                                             <td>{i + 1}</td>
                                             <td>{bud.name}</td>
                                             <td>{bud.count}</td>
-                                            <td>{bud.state || 'active'}</td>
+
                                             <td className="table-td-center">
 
                                                 <button onClick={() => {

@@ -159,8 +159,8 @@ const Category = () => {
                                 <tr>
                                     <th width={10}>STT</th>
                                     <th>Tiêu đề</th>
-                                    <th>Số lượng hoa</th>
-                                    <th width={20}>Trạng thái</th>
+                                    <th>Số lượng sản phẩm</th>
+
                                     <th width={100}>Tính năng</th>
                                 </tr>
                             </thead>
@@ -171,7 +171,7 @@ const Category = () => {
                                             <td>{i + 1}</td>
                                             <td>{category.title}</td>
                                             <td>{category.numbers_of_flower}</td>
-                                            <td>{category.state || 'active'}</td>
+
                                             <td className="table-td-center">
                                                 <button onClick={() => {
                                                     setItemCategory(category)

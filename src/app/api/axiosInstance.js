@@ -2,8 +2,8 @@ import axios from 'axios';
 import { toastError } from '../components/Toast'
 
 const instance = axios.create({
-    baseURL: 'https://api-buy-flower.votuan.xyz',
-    // baseURL: process.env.REACT_APP_API_END_POINT || 'https://api-buy-flower.votuan.xyz',
+    // baseURL: 'https://api-buy-flower.votuan.xyz',
+    baseURL: process.env.REACT_APP_API_END_POINT || 'https://api-buy-flower.votuan.xyz',
 });
 
 instance.interceptors.request.use(function(config) {

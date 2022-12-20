@@ -1,4 +1,4 @@
-import Home from '../pages/Home/index.jsx'
+import HomePage from '../pages/Home/index.jsx'
 import Customer from '../pages/ManageCustomer/index.jsx'
 import Order from '../pages/ManageOrder/index.jsx'
 import ManageFLower from '../pages/ManageFlower/index.jsx'
@@ -8,7 +8,7 @@ import ManageBud from "../pages/ManagerBud";
 import ManageCategory from "../pages/ManageCategory";
 
 export const routes = [
-    { path: '/', component: Home },
+    { path: '/', component: HomePage },
     { path: '/customer', component: Customer },
     { path: '/bud', component: ManageBud },
     { path: '/category', component: ManageCategory },

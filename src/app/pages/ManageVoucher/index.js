@@ -90,8 +90,8 @@ const VoucherDisplay = () => {
                                 <th>Mã voucher</th>
                                 <th>Người sở hữu/ giới hạn</th>
                                 <th>Nội dung</th>
-                                <th>Thời gian áp dụng</th>
-                                <th>Hiệu lực</th>
+                                <th>Bắt đầu</th>
+                                <th>Kết thúc</th>
                                 <th>% giảm</th>
                                 <th>Ngưỡng áp dụng</th>
                                 <th>Tối đa nhận</th>

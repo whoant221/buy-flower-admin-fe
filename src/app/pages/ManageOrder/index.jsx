@@ -37,12 +37,19 @@ const OrderDisplay = () => {
 
     useEffect(() => {
         const listOrders = async() => {
-            try {
-                const { data } = await orderApi.getOrders();
-                setOrders(data.orders)
-            } catch (e) {
-                console.error(e)
-            }
+            const { data } = await orderApi.getOrders();
+            setOrders(data.orders)
+        };
+        const intervalFetchOrders = setInterval(() => {
+            listOrders();
+        }, 1000)
+        return () => clearInterval(intervalFetchOrders)
+    }, []);
+
+    useEffect(() => {
+        const listOrders = async() => {
+            const { data } = await orderApi.getOrders();
+            setOrders(data.orders)
         };
 
         listOrders();
